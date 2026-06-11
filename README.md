@@ -11,7 +11,7 @@ Bu projede, bir e-ticaret web uygulamasına gönderilen **61.065 HTTP request** 
 ### 🎯 Temel Hedefler
 - **4 farklı veri kaynağının** anlamlı birleştirilmesi (Data Fusion)
 - HTTP request'lerden **12 iş mantığına dayalı feature** türetilmesi
-- Random Forest ve XGBoost ile **%94 doğrulukla** saldırı tespiti
+- - Random Forest, XGBoost ve LightGBM ile **%94 doğrulukla** saldırı tespiti
 - **KVKK ceza verileriyle** maliyet/fayda simülasyonu ve optimal threshold belirleme
 - **SHAP** ile model kararlarının açıklanabilir hale getirilmesi
 - ---
