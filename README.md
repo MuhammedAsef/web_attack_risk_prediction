@@ -45,30 +45,33 @@ Bu projede, bir e-ticaret web uygulamasına gönderilen **61.065 HTTP request** 
 | is_put | PUT method dosya yükleme saldırısı |
 ---
 
-## 🤖 Model Sonuçları
+## 🤖 Model Sonuçları (GridSearchCV Optimize)
 
 | Model | Accuracy | F1 Score | AUC-ROC |
 |-------|----------|----------|---------|
-| Random Forest | 0.9391 | 0.9279 | 0.9912 |
-| **XGBoost** | **0.9406** | **0.9287** | **0.9915** |
+| Random Forest | 0.9390 | 0.9275 | 0.9913 |
+| **XGBoost** | **0.9433** | **0.9321** | **0.9919** |
+| LightGBM | 0.9390 | 0.9270 | 0.9913 |
 
 ---
 
 ## 💰 KVKK Bazlı Maliyet/Fayda Simülasyonu
 
-### Maliyet Matrisi
-| Senaryo | Birim Maliyet | Kaynak |
-|---------|---------------|--------|
+### Maliyet Matrisi (KVKK Veritabanından Türetilmiş)
+| Senaryo | Birim Maliyet | Türetim Yöntemi |
+|---------|---------------|-----------------|
 | False Positive (FP) | 150 TL | Normal kullanıcı bloklanması |
-| False Negative (FN) | 5.000 TL | KVKK ceza riski + veri ihlali |
-| True Positive (TP) | -500 TL | Saldırı engellendi (tasarruf) |
+| False Negative (FN) | 43.677 TL | Ort. olay maliyeti (8.7M TL) x ihlale dönüşme olasılığı (%0.5) |
+| True Positive (TP) | 0 TL | Mükerrer hesaplama önlendi |
 
-### Senaryo Karşılaştırması
-| Senaryo | Toplam Maliyet |
-|---------|---------------|
-| Model Yok | 25.065.000 TL |
-| ML Model (optimal threshold) | -2.330.650 TL |
-| **Net Tasarruf** | **~27.4 Milyon TL** |
+### Yıllık Projeksiyon (ALE - Olay Bazlı, NIST SP 800-30)
+| Senaryo | Yıllık Olay | Model Yok | ML Model | Tasarruf |
+|---------|-------------|-----------|----------|---------|
+| Küçük İşletme | 2 | 17.4M TL | 22.9K TL | 17.4M TL |
+| Orta E-Ticaret | 5 | 43.6M TL | 57.2K TL | 43.6M TL |
+| Büyük Fintech | 12 | 104.8M TL | 137.4K TL | 104.6M TL |
+
+> ALE metodolojisi: NIST SP 800-30 Risk Assessment Framework
 
 > KVKK 2025 ceza tavanı: 13.620.402 TL (Kaynak: KVKK Madde 18)
 > ---
