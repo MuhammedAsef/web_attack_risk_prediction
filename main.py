@@ -66,6 +66,7 @@ def check_dependencies():
         "sklearn": "Makine öğrenmesi",
         "xgboost": "Gradient boosting",
         "shap": "Açıklanabilir yapay zeka",
+        "lightgbm": "Gradient boosting (LightGBM)",
     }
 
     all_ok = True
